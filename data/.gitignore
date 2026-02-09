@@ -1,0 +1,6 @@
+# Ignore all proposal data files
+*
+
+# Keep the sample template
+!_sample-proposal.js
+!.gitignore
