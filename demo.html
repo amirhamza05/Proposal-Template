@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Website Development Quotation - TechSerm</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Montserrat:wght@600;700;800;900&display=swap');
+
+        :root {
+            --teal: #018BBC;
+            --teal-light: #02a0d6;
+            --teal-dark: #017aa5;
+            --navy: #003C5B;
+            --navy-dark: #002d44;
+            --white: #ffffff;
+            --gray-light: #f0f0f0;
+            --text-dark: #2c2c2c;
+            --text-body: #444444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #e0e0e0;
+            color: var(--text-body);
+            line-height: 1.6;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 20px auto;
+            background: var(--white);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            page-break-after: always;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ========== TOP BAR (two lines) ========== */
+        .top-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .top-bar-teal {
+            height: 5px;
+            background: var(--teal);
+            width: 100%;
+        }
+
+        .top-bar-navy {
+            height: 3px;
+            background: var(--navy);
+            width: 100%;
+        }
+
+        /* ========== DECORATIVE CORNERS (SVG based) ========== */
+        .corner-decor-svg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 220px;
+            z-index: 5;
+        }
+
+        /* ========== LEFT BORDER ACCENT ========== */
+        .left-accent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+        }
+
+        .left-accent-top {
+            position: absolute;
+            top: 6px;
+            left: 0;
+            width: 8px;
+            height: 60px;
+            background: var(--navy);
+        }
+
+        .left-accent-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 8px;
+            height: 60px;
+            background: var(--navy);
+        }
+
+        /* ========== WATERMARK ========== */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.04;
+            z-index: 0;
+        }
+
+        .watermark img {
+            width: 400px;
+            height: 400px;
+            object-fit: contain;
+        }
+
+        /* ========== LOGO ========== */
+        .logo-container {
+            padding: 30px 0 0 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-container img {
+            height: 80px;
+            width: auto;
+        }
+
+        /* ========== COVER PAGE ========== */
+        .cover-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding-top: 180px;
+        }
+
+        .cover-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: 0.5px;
+            padding-bottom: 12px;
+            display: inline-block;
+            border-bottom: 2px solid var(--navy);
+        }
+
+        .cover-date {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--teal);
+            margin-top: 30px;
+            padding-bottom: 8px;
+            display: inline-block;
+            border-bottom: 2px solid var(--teal);
+        }
+
+        /* ========== FOOTER ========== */
+        .page-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            margin-top: auto;
+        }
+
+        .footer-cover-wrap {
+            position: relative;
+        }
+
+        /* The rounded hump/dome */
+        .footer-cover-hump {
+            position: relative;
+            z-index: 3;
+            width: 82%;
+            margin: 0 auto;
+            background: var(--teal);
+            border-radius: 100px 100px 0 0;
+            padding: 30px 40px 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            box-sizing: border-box;
+            margin-bottom: -45px;
+        }
+
+        /* Teal wing bar behind hump */
+        .footer-cover-wings {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 45px;
+            background: var(--teal);
+        }
+
+        /* Dark navy bottom strip */
+        .footer-cover-navy {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 14px;
+            background: var(--navy);
+        }
+
+        .footer-item {
+            text-align: center;
+            color: var(--white);
+            flex: 1;
+        }
+
+        .footer-item .icon {
+            width: 50px;
+            height: 50px;
+            background: var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+        }
+
+        .footer-item .icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--white);
+        }
+
+        .footer-item .label {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 3px;
+        }
+
+        .footer-item .value {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        /* ========== INNER PAGE FOOTER ========== */
+        .contact-bar {
+            display: flex;
+            width: 100%;
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .contact-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            color: white;
+            height: 100%;
+        }
+
+        .contact-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .contact-icon-box {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .contact-text-group {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.3;
+        }
+
+        .contact-label {
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .contact-value {
+            font-weight: 400;
+            font-size: 12px;
+            opacity: 0.95;
+            white-space: nowrap;
+        }
+
+        .bg-teal {
+            background-color: var(--teal);
+        }
+
+        .bg-navy-footer {
+            background-color: var(--navy);
+        }
+
+        .bg-teal .contact-icon-box {
+            background-color: var(--navy);
+            color: white;
+        }
+
+        .bg-navy-footer .contact-icon-box {
+            background-color: var(--teal);
+            color: white;
+        }
+
+        .contact-item-left {
+            flex: 1;
+            justify-content: center;
+            padding-right: 35px;
+            z-index: 2;
+        }
+
+        .contact-item-left::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: calc(42.4px / -2);
+            width: 42.4px;
+            height: 42.4px;
+            background-color: var(--teal);
+            transform: translateY(-50%) rotate(45deg);
+            border-top: 3px solid white;
+            border-right: 3px solid white;
+        }
+
+        .contact-item-mid {
+            flex: 1.4;
+            justify-content: center;
+            z-index: 1;
+            padding: 0 25px;
+        }
+
+        .contact-item-right {
+            flex: 1;
+            z-index: 2;
+            justify-content: flex-start;
+            padding-left: 45px;
+        }
+
+        .contact-item-right::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: calc(42.4px / -2);
+            width: 42.4px;
+            height: 42.4px;
+            background-color: var(--teal);
+            transform: translateY(-50%) rotate(45deg);
+            border-bottom: 3px solid white;
+            border-left: 3px solid white;
+        }
+
+        /* ========== PAGE NUMBER ========== */
+        .page-number {
+            position: absolute;
+            bottom: 70px;
+            right: 50px;
+            font-size: 13px;
+            color: var(--text-body);
+            z-index: 5;
+        }
+
+        /* ========== CONTENT PAGES ========== */
+        .page-content {
+            padding: 50px 60px 100px 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ========== SECTION HEADINGS ========== */
+        .section-heading {
+            font-family: 'Roboto', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--teal);
+            margin-bottom: 30px;
+        }
+
+        /* ========== INNER CORNER DECORATIONS ========== */
+        .inner-corner-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 1;
+        }
+
+        .inner-corner-left {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            z-index: 1;
+        }
+
+        /* ========== COVER LETTER ========== */
+        .letter-date {
+            font-size: 15px;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .letter-greeting {
+            font-size: 15px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .letter-body p {
+            font-size: 14.5px;
+            color: var(--text-body);
+            margin-bottom: 16px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .letter-body strong {
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .letter-sign {
+            margin-top: 35px;
+            font-size: 14.5px;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* ========== TABLES ========== */
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .styled-table thead th {
+            background: var(--teal);
+            color: var(--white);
+            padding: 12px 16px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .styled-table tbody td {
+            padding: 12px 16px;
+            border: 1px solid #dde3e8;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .styled-table tbody tr:nth-child(even) {
+            background: #f7fbfc;
+        }
+
+        .styled-table .text-left {
+            text-align: left;
+        }
+
+        .styled-table .text-bold {
+            font-weight: 700;
+        }
+
+        .styled-table tfoot td {
+            background: var(--teal);
+            color: var(--white);
+            padding: 12px 16px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        /* ========== OVERVIEW TEXT ========== */
+        .overview-text {
+            font-size: 14.5px;
+            line-height: 1.75;
+            color: var(--text-body);
+            text-align: justify;
+            margin-bottom: 16px;
+        }
+
+        .overview-text strong {
+            color: var(--text-dark);
+        }
+
+        /* ========== WORK PROCESS ========== */
+        .process-section {
+            margin-bottom: 22px;
+        }
+
+        .process-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .process-list {
+            padding-left: 28px;
+            margin-bottom: 5px;
+        }
+
+        .process-list li {
+            font-size: 14px;
+            color: var(--text-body);
+            margin-bottom: 5px;
+            line-height: 1.6;
+        }
+
+        .process-sublist {
+            padding-left: 24px;
+            list-style-type: circle;
+        }
+
+        .process-sublist li {
+            font-size: 13.5px;
+        }
+
+        /* ========== FEATURE TABLE ========== */
+        .feature-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .feature-table thead th {
+            background: var(--teal);
+            color: var(--white);
+            padding: 10px 8px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .feature-table tbody td {
+            padding: 10px 8px;
+            border: 1px solid #dde3e8;
+            text-align: center;
+            vertical-align: top;
+        }
+
+        .feature-table .func-cell {
+            text-align: left;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .feature-table .func-cell .func-title {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .feature-table .func-cell ul {
+            padding-left: 18px;
+            margin: 0;
+        }
+
+        .feature-table .func-cell ul li {
+            font-size: 12.5px;
+            color: var(--text-body);
+            margin-bottom: 2px;
+        }
+
+        .feature-table tbody tr:nth-child(even) {
+            background: #f7fbfc;
+        }
+
+        .feature-table tfoot td {
+            background: var(--teal);
+            color: var(--white);
+            padding: 10px 8px;
+            font-weight: 700;
+        }
+
+        /* ========== PAYMENT TABLE ========== */
+        .payment-subtotal {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        .payment-subtotal thead th {
+            background: var(--teal);
+            color: var(--white);
+            padding: 10px 16px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .payment-subtotal tbody td {
+            padding: 14px 16px;
+            border: 1px solid #dde3e8;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* ========== NOTES ========== */
+        .note-text {
+            font-size: 13px;
+            color: var(--teal-dark);
+            font-weight: 500;
+            font-style: italic;
+            margin-top: 15px;
+        }
+
+        /* ========== HR DIVIDER ========== */
+        .section-divider {
+            border: none;
+            border-top: 2px solid var(--teal);
+            margin: 5px 0 25px;
+            opacity: 0.4;
+        }
+
+        /* ========== COVER PAGE COLORS ========== */
+        .cover-page .top-bar-teal {
+            background: #018BBC;
+        }
+
+        .cover-page .top-bar-navy {
+            background: #003C5B;
+        }
+
+        .cover-page .left-accent-top,
+        .cover-page .left-accent-bottom {
+            background: #003C5B;
+        }
+
+        .cover-page .footer-cover-hump {
+            background: #018BBC;
+        }
+
+        .cover-page .footer-cover-wings {
+            background: #018BBC;
+        }
+
+        .cover-page .footer-cover-navy {
+            background: #003C5B;
+        }
+
+        .cover-page .footer-item .icon {
+            background: #003C5B;
+        }
+
+        /* ========== PRINT STYLES ========== */
+        @media print {
+            body {
+                background: white;
+                margin: 0;
+                padding: 0;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+                page-break-inside: avoid;
+                height: 297mm;
+                min-height: 297mm;
+                max-height: 297mm;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                padding-bottom: 0;
+            }
+            .page-footer {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                margin-top: auto;
+            }
+            .page-content {
+                flex: 1;
+                padding-bottom: 80px;
+            }
+            .page-number {
+                bottom: 75px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- PAGE 1: COVER PAGE -->
+<!-- ============================================================ -->
+<div class="page cover-page">
+    <div class="top-bar">
+        <div class="top-bar-teal"></div>
+        <div class="top-bar-navy"></div>
+    </div>
+
+    <!-- Left border accents -->
+    <div class="left-accent">
+        <div class="left-accent-top"></div>
+        <div class="left-accent-bottom"></div>
+    </div>
+
+    <!-- Top-right corner decoration -->
+    <svg class="corner-decor-svg" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="60,0 200,0 200,180" fill="#003C5B"/>
+        <polygon points="110,0 200,0 200,120" fill="#018BBC"/>
+    </svg>
+
+    <!-- Watermark -->
+    <div class="watermark">
+        <img src="assets/favicon.svg" alt="Watermark">
+    </div>
+
+    <!-- Logo -->
+    <div class="logo-container">
+        <img src="assets/logo.svg" alt="TechSerm Logo">
+    </div>
+
+    <!-- Cover content -->
+    <div class="cover-content">
+        <h1 class="cover-title">Alumni Website Development Quotation</h1>
+        <p class="cover-date">21 July 2025</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="page-footer">
+        <div class="footer-cover-wrap">
+            <div class="footer-cover-hump">
+                <div class="footer-item">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                    <div class="label">Website</div>
+                    <div class="value">www.techserm.io</div>
+                </div>
+                <div class="footer-item">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <div class="label">Email</div>
+                    <div class="value">contact@techserm.io</div>
+                </div>
+                <div class="footer-item">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </div>
+                    <div class="label">Phone</div>
+                    <div class="value">01733682541</div>
+                </div>
+            </div>
+            <div class="footer-cover-wings"></div>
+            <div class="footer-cover-navy"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 2: COVER LETTER -->
+<!-- ============================================================ -->
+<div class="page">
+    <div class="top-bar">
+        <div class="top-bar-teal"></div>
+        <div class="top-bar-navy"></div>
+    </div>
+
+    <!-- Watermark -->
+    <div class="watermark">
+        <img src="assets/favicon.svg" alt="Watermark">
+    </div>
+
+    <div class="page-content">
+        <h2 class="section-heading">Cover Letter</h2>
+
+        <p class="letter-date">Date: 02 May 2025</p>
+        <p class="letter-greeting">Dear Sir,</p>
+
+        <div class="letter-body">
+            <p>I am writing to formally introduce myself and my company, <strong>TechSerm</strong>, in connection with the proposed development of your <strong>Alumni Website.</strong> We are excited about the opportunity to collaborate with your team and are committed to delivering a high-quality, user-friendly solution tailored to meet your organizational goals.</p>
+
+            <p>At Techserm, we are passionate about building software that not only meets technical expectations but also contributes to meaningful outcomes for our clients. Our experienced and creative team is fully prepared to undertake this project and deliver a system that supports growth, engagement, and ease of use across your learning ecosystem.</p>
+
+            <p>The attached report outlines our complete project approach, including development stages, timelines, and deliverables, ensuring full transparency and clarity throughout the process. We believe that clear communication and mutual understanding are the foundations of successful software development, and we are committed to supporting you every step of the way.</p>
+
+            <p>If you have any questions or require further clarification at any point, please feel free to reach out directly. We look forward to the opportunity to work together and make this project a resounding success.</p>
+        </div>
+
+        <div class="letter-sign">
+            Sincerely,<br>
+            Abdullah Al Maruf<br>
+            Project Manager<br>
+            TechSerm
+        </div>
+    </div>
+
+    <div class="page-number">Page: 2</div>
+
+    <div class="page-footer">
+        <div class="contact-bar">
+            <!-- LEFT: Email -->
+            <div class="contact-item contact-item-left bg-teal">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">contact@techserm.io</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MID: Website -->
+            <div class="contact-item contact-item-mid bg-navy-footer">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Website</span>
+                        <span class="contact-value">www.techserm.io</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Phone -->
+            <div class="contact-item contact-item-right bg-teal">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">01733682541</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 3: OVERVIEW & TOOLS AND TECHNOLOGY -->
+<!-- ============================================================ -->
+<div class="page">
+    <div class="top-bar">
+        <div class="top-bar-teal"></div>
+        <div class="top-bar-navy"></div>
+    </div>
+
+    <div class="watermark">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(100,100)">
+                <rect x="-70" y="-70" width="140" height="140" fill="none" stroke="#003C5B" stroke-width="6" transform="rotate(45)"/>
+                <rect x="-50" y="-50" width="100" height="100" fill="none" stroke="#003C5B" stroke-width="4" transform="rotate(45)"/>
+                <circle cx="0" cy="0" r="25" fill="none" stroke="#003C5B" stroke-width="4"/>
+                <line x1="-70" y1="0" x2="-30" y2="0" stroke="#003C5B" stroke-width="3"/>
+                <line x1="30" y1="0" x2="70" y2="0" stroke="#003C5B" stroke-width="3"/>
+                <line x1="0" y1="-70" x2="0" y2="-30" stroke="#003C5B" stroke-width="3"/>
+                <line x1="0" y1="30" x2="0" y2="70" stroke="#003C5B" stroke-width="3"/>
+            </g>
+        </svg>
+    </div>
+
+    <div class="page-content">
+        <h2 class="section-heading">1.0 Overview</h2>
+
+        <p class="overview-text">We are committed to designing and developing an <strong>Interactive Alumni Website</strong> tailored to your specifications. Based on your provided requirements and proposal, our team will deliver all outlined features and functionality.</p>
+
+        <p class="overview-text">Our approach prioritizes both <strong>usability</strong> and <strong>aesthetics</strong>&mdash;ensuring a seamless user experience while maintaining high design standards. Understanding the critical role of simplicity and efficiency in organizational platforms, we aim to deliver an intuitive, scalable, and visually appealing solution that aligns with your expectations.</p>
+
+        <br><br>
+
+        <h2 class="section-heading">2.0 Tools and Technology</h2>
+
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Sector</th>
+                    <th>Technology</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-bold">UI/UX Design</td>
+                    <td>Use latest tools (Figma, Sketch , etc)</td>
+                </tr>
+                <tr>
+                    <td class="text-bold">Frontend</td>
+                    <td>Flutter</td>
+                </tr>
+                <tr>
+                    <td class="text-bold">Backend</td>
+                    <td>Dart</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page-number">Page: 3</div>
+
+    <div class="page-footer">
+        <div class="contact-bar">
+            <!-- LEFT: Email -->
+            <div class="contact-item contact-item-left bg-teal">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">contact@techserm.io</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MID: Website -->
+            <div class="contact-item contact-item-mid bg-navy-footer">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Website</span>
+                        <span class="contact-value">www.techserm.io</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Phone -->
+            <div class="contact-item contact-item-right bg-teal">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">01733682541</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 4: WORK PROCESS -->
+<!-- ============================================================ -->
+<div class="page">
+    <div class="top-bar">
+        <div class="top-bar-teal"></div>
+        <div class="top-bar-navy"></div>
+    </div>
+
+    <div class="watermark">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(100,100)">
+                <rect x="-70" y="-70" width="140" height="140" fill="none" stroke="#003C5B" stroke-width="6" transform="rotate(45)"/>
+                <rect x="-50" y="-50" width="100" height="100" fill="none" stroke="#003C5B" stroke-width="4" transform="rotate(45)"/>
+                <circle cx="0" cy="0" r="25" fill="none" stroke="#003C5B" stroke-width="4"/>
+                <line x1="-70" y1="0" x2="-30" y2="0" stroke="#003C5B" stroke-width="3"/>
+                <line x1="30" y1="0" x2="70" y2="0" stroke="#003C5B" stroke-width="3"/>
+                <line x1="0" y1="-70" x2="0" y2="-30" stroke="#003C5B" stroke-width="3"/>
+                <line x1="0" y1="30" x2="0" y2="70" stroke="#003C5B" stroke-width="3"/>
+            </g>
+        </svg>
+    </div>
+
+    <div class="page-content">
+        <h2 class="section-heading">3.0 Work Process</h2>
+
+        <div class="process-section">
+            <p class="process-title">a. Requirements Finalization</p>
+            <ul class="process-list">
+                <li>List core features: profile, application form, member list with filters, payment form, token generation.</li>
+                <li>Confirm data fields and user roles.</li>
+            </ul>
+        </div>
+
+        <div class="process-section">
+            <p class="process-title">b. Planning</p>
+            <ul class="process-list">
+                <li>Sketch simple wireframes for key pages.</li>
+                <li>Define basic user flow (form &rarr; submission &rarr; admin approval &rarr; token).</li>
+                <li>Choose a tech stack (e.g., Laravel).</li>
+            </ul>
+        </div>
+
+        <div class="process-section">
+            <p class="process-title">c. Design</p>
+            <ul class="process-list">
+                <li>Select a clean UI theme with responsive layout.</li>
+                <li>Design minimal, functional forms and lists.</li>
+            </ul>
+        </div>
+
+        <div class="process-section">
+            <p class="process-title">d. Development</p>
+            <ul class="process-list">
+                <li>Front-End: Build pages using HTML/CSS/JS or Blade templates.</li>
+                <li>Back-End:
+                    <ul class="process-sublist">
+                        <li>Create database tables (users, payments, tokens).</li>
+                        <li>Set up CRUD for all features.</li>
+                        <li>Add basic validation and security (CSRF, auth).</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="process-section">
+            <p class="process-title">e. Testing &amp; Deployment</p>
+            <ul class="process-list">
+                <li>Test forms, filters, and token generation.</li>
+                <li>Deploy to live server (e.g., shared hosting or VPS).</li>
+                <li>Configure domain and SSL.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="page-number">Page: 4</div>
+
+    <div class="page-footer">
+        <div class="contact-bar">
+            <!-- LEFT: Email -->
+            <div class="contact-item contact-item-left bg-teal">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">contact@techserm.io</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MID: Website -->
+            <div class="contact-item contact-item-mid bg-navy-footer">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Website</span>
+                        <span class="contact-value">www.techserm.io</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Phone -->
+            <div class="contact-item contact-item-right bg-teal">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">01733682541</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 5: RESOURCE COSTING -->
+<!-- ============================================================ -->
+<div class="page">
+    <div class="top-bar">
+        <div class="top-bar-teal"></div>
+        <div class="top-bar-navy"></div>
+    </div>
+
+    <div class="watermark">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(100,100)">
+                <rect x="-70" y="-70" width="140" height="140" fill="none" stroke="#003C5B" stroke-width="6" transform="rotate(45)"/>
+                <rect x="-50" y="-50" width="100" height="100" fill="none" stroke="#003C5B" stroke-width="4" transform="rotate(45)"/>
+                <circle cx="0" cy="0" r="25" fill="none" stroke="#003C5B" stroke-width="4"/>
+                <line x1="-70" y1="0" x2="-30" y2="0" stroke="#003C5B" stroke-width="3"/>
+                <line x1="30" y1="0" x2="70" y2="0" stroke="#003C5B" stroke-width="3"/>
+                <line x1="0" y1="-70" x2="0" y2="-30" stroke="#003C5B" stroke-width="3"/>
+                <line x1="0" y1="30" x2="0" y2="70" stroke="#003C5B" stroke-width="3"/>
+            </g>
+        </svg>
+    </div>
+
+    <div class="page-content">
+        <h2 class="section-heading">4.0 Resource Costing</h2>
+
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Count</th>
+                    <th>Responsibility</th>
+                    <th>Duration (Days)</th>
+                    <th>Daily Rate (BDT)</th>
+                    <th>Total (BDT)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-left text-bold">Project Manager</td>
+                    <td>1</td>
+                    <td>Project Management</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="text-left text-bold">UI/UX Designer</td>
+                    <td>1</td>
+                    <td>Design UI/UX</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="text-left text-bold">Developer</td>
+                    <td>2</td>
+                    <td>Frontend and Backend development</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="text-left text-bold">QA Engineer</td>
+                    <td>1</td>
+                    <td>Test Application</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td>Total</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="page-number">Page: 5</div>
+
+    <div class="page-footer">
+        <div class="contact-bar">
+            <!-- LEFT: Email -->
+            <div class="contact-item contact-item-left bg-teal">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">contact@techserm.io</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MID: Website -->
+            <div class="contact-item contact-item-mid bg-navy-footer">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Website</span>
+                        <span class="contact-value">www.techserm.io</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Phone -->
+            <div class="contact-item contact-item-right bg-teal">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">01733682541</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 6: FEATURE MODULE WISE COSTING (Part 1) -->
+<!-- ============================================================ -->
+<div class="page">
+    <div class="top-bar">
+        <div class="top-bar-teal"></div>
+        <div class="top-bar-navy"></div>
+    </div>
+
+    <div class="watermark">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(100,100)">
+                <rect x="-70" y="-70" width="140" height="140" fill="none" stroke="#003C5B" stroke-width="6" transform="rotate(45)"/>
+                <rect x="-50" y="-50" width="100" height="100" fill="none" stroke="#003C5B" stroke-width="4" transform="rotate(45)"/>
+                <circle cx="0" cy="0" r="25" fill="none" stroke="#003C5B" stroke-width="4"/>
+                <line x1="-70" y1="0" x2="-30" y2="0" stroke="#003C5B" stroke-width="3"/>
+                <line x1="30" y1="0" x2="70" y2="0" stroke="#003C5B" stroke-width="3"/>
+                <line x1="0" y1="-70" x2="0" y2="-30" stroke="#003C5B" stroke-width="3"/>
+                <line x1="0" y1="30" x2="0" y2="70" stroke="#003C5B" stroke-width="3"/>
+            </g>
+        </svg>
+    </div>
+
+    <div class="page-content">
+        <h2 class="section-heading">5.0 Feature Module Wise Costing</h2>
+
+        <p style="font-size: 13px; color: var(--text-body); margin-bottom: 5px;">*Efforts for each resource is given in man days</p>
+        <p style="font-size: 13px; color: var(--text-body); margin-bottom: 20px;">PM = Project Manager, UI = UI/UX Designer, D = Developer, QA= QA Engineer</p>
+
+        <table class="feature-table">
+            <thead>
+                <tr>
+                    <th style="width: 30px;">#</th>
+                    <th style="width: 240px;">Functionalities</th>
+                    <th>Cost</th>
+                    <th>PM</th>
+                    <th>UI</th>
+                    <th>D</th>
+                    <th>QA</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td class="func-cell">
+                        <div class="func-title">Main website design</div>
+                        <ul>
+                            <li>Homepage with organization intro, vision, committee list</li>
+                            <li>Notice board display</li>
+                            <li>Photo gallery (album-based)</li>
+                        </ul>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td class="func-cell">
+                        <div class="func-title">User Registration &amp; Profile</div>
+                        <ul>
+                            <li>Alumni registration with full details (name, parents, blood group, contact, education, profession, address, photo)</li>
+                            <li>Member dashboard with editable profile</li>
+                            <li>Auto-generated printable ID card</li>
+                        </ul>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td class="func-cell">
+                        <div class="func-title">Member Directory</div>
+                        <ul>
+                            <li>Searchable member list by name, blood group, profession, etc</li>
+                        </ul>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td class="func-cell">
+                        <div class="func-title">Job Replacement Cell</div>
+                        <ul>
+                            <li>Admin-posted job circulars</li>
+                            <li>Searchable job list for members</li>
+                        </ul>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td class="func-cell">
+                        <div class="func-title">Donation System</div>
+                        <ul>
+                            <li>Payment gateway integration (bKash, Nagad, etc.)</li>
+                            <li>Member donation history</li>
+                            <li>Admin dashboard for donation and expense tracking</li>
+                        </ul>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page-number">Page: 6</div>
+
+    <div class="page-footer">
+        <div class="contact-bar">
+            <!-- LEFT: Email -->
+            <div class="contact-item contact-item-left bg-teal">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">contact@techserm.io</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MID: Website -->
+            <div class="contact-item contact-item-mid bg-navy-footer">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Website</span>
+                        <span class="contact-value">www.techserm.io</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Phone -->
+            <div class="contact-item contact-item-right bg-teal">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">01733682541</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 7: FEATURE MODULE WISE COSTING (Part 2) -->
+<!-- ============================================================ -->
+<div class="page">
+    <div class="top-bar">
+        <div class="top-bar-teal"></div>
+        <div class="top-bar-navy"></div>
+    </div>
+
+    <div class="watermark">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(100,100)">
+                <rect x="-70" y="-70" width="140" height="140" fill="none" stroke="#003C5B" stroke-width="6" transform="rotate(45)"/>
+                <rect x="-50" y="-50" width="100" height="100" fill="none" stroke="#003C5B" stroke-width="4" transform="rotate(45)"/>
+                <circle cx="0" cy="0" r="25" fill="none" stroke="#003C5B" stroke-width="4"/>
+                <line x1="-70" y1="0" x2="-30" y2="0" stroke="#003C5B" stroke-width="3"/>
+                <line x1="30" y1="0" x2="70" y2="0" stroke="#003C5B" stroke-width="3"/>
+                <line x1="0" y1="-70" x2="0" y2="-30" stroke="#003C5B" stroke-width="3"/>
+                <line x1="0" y1="30" x2="0" y2="70" stroke="#003C5B" stroke-width="3"/>
+            </g>
+        </svg>
+    </div>
+
+    <div class="page-content">
+        <table class="feature-table">
+            <tbody>
+                <tr>
+                    <td style="width: 30px;">6</td>
+                    <td class="func-cell" style="width: 240px;">
+                        <div class="func-title">Blood Donation System</div>
+                        <ul>
+                            <li>Member donor availability status</li>
+                            <li>Emergency blood request system</li>
+                            <li>Donor search by blood group/location</li>
+                        </ul>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td class="func-cell">
+                        <div class="func-title">Notice Board</div>
+                        <ul>
+                            <li>Admin-posted notices</li>
+                            <li>Visible on homepage and member dashboard</li>
+                        </ul>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td class="func-cell">
+                        <div class="func-title">Admin Panel</div>
+                        <ul>
+                            <li>Member management (approve, edit, delete)</li>
+                            <li>Donation &amp; expense management</li>
+                            <li>Job, notice, gallery, committee management</li>
+                            <li>Role-based access control</li>
+                        </ul>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td>Total</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="page-number">Page: 7</div>
+
+    <div class="page-footer">
+        <div class="contact-bar">
+            <!-- LEFT: Email -->
+            <div class="contact-item contact-item-left bg-teal">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">contact@techserm.io</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MID: Website -->
+            <div class="contact-item contact-item-mid bg-navy-footer">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Website</span>
+                        <span class="contact-value">www.techserm.io</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Phone -->
+            <div class="contact-item contact-item-right bg-teal">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">01733682541</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 8: RELEASE PLAN & PAYMENT BREAKDOWN -->
+<!-- ============================================================ -->
+<div class="page">
+    <div class="top-bar">
+        <div class="top-bar-teal"></div>
+        <div class="top-bar-navy"></div>
+    </div>
+
+    <div class="watermark">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(100,100)">
+                <rect x="-70" y="-70" width="140" height="140" fill="none" stroke="#003C5B" stroke-width="6" transform="rotate(45)"/>
+                <rect x="-50" y="-50" width="100" height="100" fill="none" stroke="#003C5B" stroke-width="4" transform="rotate(45)"/>
+                <circle cx="0" cy="0" r="25" fill="none" stroke="#003C5B" stroke-width="4"/>
+                <line x1="-70" y1="0" x2="-30" y2="0" stroke="#003C5B" stroke-width="3"/>
+                <line x1="30" y1="0" x2="70" y2="0" stroke="#003C5B" stroke-width="3"/>
+                <line x1="0" y1="-70" x2="0" y2="-30" stroke="#003C5B" stroke-width="3"/>
+                <line x1="0" y1="30" x2="0" y2="70" stroke="#003C5B" stroke-width="3"/>
+            </g>
+        </svg>
+    </div>
+
+    <div class="page-content">
+        <!-- Release Plan -->
+        <h2 class="section-heading">Release Plane (Module Wise)</h2>
+        <hr class="section-divider">
+
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Release Number</th>
+                    <th>Features</th>
+                    <th>Approximate Time (Days)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td class="text-left">
+                        <ul style="padding-left: 18px; margin: 0;">
+                            <li><strong>Main Website Design</strong></li>
+                            <li><strong>User Registration &amp; Profile</strong></li>
+                        </ul>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td class="text-left">
+                        <ul style="padding-left: 18px; margin: 0;">
+                            <li><strong>Member Directory</strong></li>
+                            <li><strong>Job Replacement Cell</strong></li>
+                            <li><strong>Donation System</strong></li>
+                        </ul>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td class="text-left">
+                        <ul style="padding-left: 18px; margin: 0;">
+                            <li><strong>Blood Donation System</strong></li>
+                            <li><strong>Notice Board</strong></li>
+                            <li><strong>Admin Panel</strong></li>
+                        </ul>
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td>Total</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <br><br>
+
+        <!-- Payment Breakdown -->
+        <h2 class="section-heading">Payment Breakdown (Module Wise)</h2>
+        <hr class="section-divider">
+
+        <!-- Subtotal box -->
+        <table class="payment-subtotal">
+            <thead>
+                <tr>
+                    <th colspan="2">Amount (BDT)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="font-weight: 700;">Payment Subtotal</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Payment milestones table -->
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Sl. No</th>
+                    <th>Payment</th>
+                    <th>Milestone</th>
+                    <th>Percent (%)</th>
+                    <th>Amount (BDT)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>1<sup>st</sup> payment</td>
+                    <td>Inception Report</td>
+                    <td>25</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>2<sup>nd</sup> Payment</td>
+                    <td>After First Release</td>
+                    <td>25</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>3<sup>rd</sup> Payment</td>
+                    <td>After Second Release</td>
+                    <td>25</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Final Payment</td>
+                    <td>After Third Release</td>
+                    <td>25</td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3"></td>
+                    <td>100%</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <p class="note-text">* Payment will be updated based on the requirements</p>
+    </div>
+
+    <div class="page-number">Page: 8</div>
+
+    <div class="page-footer">
+        <div class="contact-bar">
+            <!-- LEFT: Email -->
+            <div class="contact-item contact-item-left bg-teal">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">contact@techserm.io</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MID: Website -->
+            <div class="contact-item contact-item-mid bg-navy-footer">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Website</span>
+                        <span class="contact-value">www.techserm.io</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Phone -->
+            <div class="contact-item contact-item-right bg-teal">
+                <div class="contact-content">
+                    <div class="contact-icon-box">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </div>
+                    <div class="contact-text-group">
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">01733682541</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
