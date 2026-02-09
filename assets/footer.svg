@@ -1,0 +1,101 @@
+<svg width="1000" height="90" viewBox="0 0 1000 90" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Import Google Font -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap');
+      
+      .text-family { font-family: 'Roboto', sans-serif; fill: white; }
+      .label { font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+      .value { font-weight: 400; font-size: 14px; opacity: 0.9; }
+      
+      /* Colors */
+      .bg-cyan { fill: #0087b8; }
+      .bg-navy { fill: #043857; }
+      
+      /* Icon Containers */
+      .circle-navy { fill: #043857; }
+      .circle-cyan { fill: #0087b8; }
+      .icon-white { fill: white; }
+    </style>
+  </defs>
+
+  <!-- BACKGROUND (Middle Section - Dark Navy) -->
+  <!-- This rectangle sits behind everything, effectively creating the middle section color -->
+  <rect x="0" y="0" width="1000" height="90" class="bg-navy" />
+
+  <!-- =========================================
+       1. LEFT SECTION (Email) - Points Right
+       ========================================= -->
+  <g id="left-section">
+    <!-- Arrow Shape: 
+         (0,0) -> Top Right (335,0) -> Tip (380,45) -> Bottom Right (335,90) -> Bottom Left (0,90) 
+    -->
+    <path d="M0,0 L335,0 L380,45 L335,90 L0,90 Z" class="bg-cyan" />
+    
+    <!-- White Separator Line (The "Cut") -->
+    <polyline points="335,0 380,45 335,90" fill="none" stroke="white" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter" />
+
+    <!-- CONTENT -->
+    <g transform="translate(40, 23)">
+      <!-- Circle Background -->
+      <circle cx="22" cy="22" r="22" class="circle-navy" />
+      
+      <!-- Envelope Icon -->
+      <g transform="translate(10, 10) scale(0.045)">
+        <path class="icon-white" d="M512 48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48v320c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V48zM102.7 64H409.3L256 195.8 102.7 64zM48 93.3l128.7 110.7L48 314.7V93.3zm29.3 261.4L199.6 242l43.2 37.1c8 6.9 19.9 6.9 27.9 0l43.2-37.1L434.7 354.7H77.3zm386.7-40L335.3 204 464 93.3v221.4z"/>
+      </g>
+
+      <!-- Text -->
+      <text x="58" y="15" class="text-family label">Email</text>
+      <text x="58" y="33" class="text-family value">contact@techserm.io</text>
+    </g>
+  </g>
+
+  <!-- =========================================
+       2. MIDDLE SECTION (Website)
+       ========================================= -->
+  <g id="middle-section" transform="translate(435, 23)">
+    <!-- Content only (Background is the base rect) -->
+    
+    <!-- Circle Background (Inverted: Cyan on Navy) -->
+    <circle cx="22" cy="22" r="22" class="circle-cyan" />
+    
+    <!-- Globe Icon -->
+    <g transform="translate(10, 10) scale(0.045)">
+      <path class="icon-white" d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V224c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM288 480c0-17.7-14.3-32-32-32s-32 14.3-32 32v32c0 17.7 14.3 32 32 32s32-14.3 32-32v-32zM0 256c0 17.7 14.3 32 32 32H224c17.7 0 32-14.3 32-32s-14.3-32-32-32H32c-17.7 0-32 14.3-32 32zM480 256c0 17.7 14.3 32 32 32h32c17.7 0 32-14.3 32-32s-14.3-32-32-32h-32c-17.7 0-32 14.3-32 32zM81.9 81.9c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0l-22.6-22.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L81.9 81.9zM430.1 430.1c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0l-22.6-22.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L430.1 430.1zM430.1 81.9c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l22.6-22.6c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3L430.1 81.9zM81.9 430.1c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l22.6-22.6c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3L81.9 430.1z"/>
+    </g>
+
+    <!-- Text -->
+    <text x="58" y="15" class="text-family label">Website</text>
+    <text x="58" y="33" class="text-family value">www.techserm.io</text>
+  </g>
+
+  <!-- =========================================
+       3. RIGHT SECTION (Phone) - Points Left
+       ========================================= -->
+  <g id="right-section">
+    <!-- Arrow Shape: 
+         (1000,0) -> Bottom Right (1000,90) -> Bottom Inner (665,90) -> Tip (620,45) -> Top Inner (665,0)
+    -->
+    <path d="M1000,0 L1000,90 L665,90 L620,45 L665,0 Z" class="bg-cyan" />
+    
+    <!-- White Separator Line -->
+    <polyline points="665,90 620,45 665,0" fill="none" stroke="white" stroke-width="6" stroke-linecap="butt" stroke-linejoin="miter" />
+
+    <!-- CONTENT (Left Aligned within the section) -->
+    <!-- Position starts at X=685 to clear the arrow tip -->
+    <g transform="translate(685, 23)">
+      <!-- Circle Background -->
+      <circle cx="22" cy="22" r="22" class="circle-navy" />
+      
+      <!-- Phone Icon -->
+      <g transform="translate(11, 11) scale(0.045)">
+        <path class="icon-white" d="M497.4 360.6l-112-48c-10.7-4.6-23.2-1.9-30.9 6.7l-41.6 46.3c-62.8-30.5-106.4-74.1-136.9-136.9l46.3-41.6c8.6-7.7 11.3-20.2 6.7-30.9l-48-112C176.4 32.5 165.7 24 153.9 24H48C21.5 24 0 45.5 0 72c0 247.2 200.8 448 448 448 26.5 0 48-21.5 48-48V392c0-11.8-8.5-22.5-19.4-27.1z"/>
+      </g>
+
+      <!-- Text -->
+      <text x="58" y="15" class="text-family label">Phone</text>
+      <text x="58" y="33" class="text-family value">01733682541</text>
+    </g>
+  </g>
+</svg>
