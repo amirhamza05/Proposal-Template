@@ -62,7 +62,7 @@
         }
 
         .top-bar-navy {
-            height: 3px;
+            height: 5px;
             background: var(--navy);
             width: 100%;
         }
@@ -372,7 +372,7 @@
 
         /* ========== CONTENT PAGES ========== */
         .page-content {
-            padding: 50px 60px 100px 60px;
+            padding: 50px 60px 120px 60px;
             position: relative;
             z-index: 2;
         }
@@ -438,28 +438,33 @@
         .styled-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 15px;
+            margin-top: 20px;
             font-size: 14px;
+            border: 1px solid #7ec9df;
         }
 
         .styled-table thead th {
-            background: var(--teal);
-            color: var(--white);
-            padding: 12px 16px;
+            background: #d4f1f9;
+            color: var(--navy);
+            padding: 14px 16px;
             text-align: center;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 14px;
+            letter-spacing: 0.3px;
+            border: 1px solid #b8d8e6;
         }
 
         .styled-table tbody td {
             padding: 12px 16px;
-            border: 1px solid #dde3e8;
+            border: 1px solid #d0e8f0;
             text-align: center;
             vertical-align: middle;
+            background: var(--white);
+            color: var(--text-body);
         }
 
         .styled-table tbody tr:nth-child(even) {
-            background: #f7fbfc;
+            background: #f8fcfe;
         }
 
         .styled-table .text-left {
@@ -468,14 +473,16 @@
 
         .styled-table .text-bold {
             font-weight: 700;
+            color: var(--navy);
         }
 
         .styled-table tfoot td {
-            background: var(--teal);
-            color: var(--white);
-            padding: 12px 16px;
+            background: #d4f1f9;
+            color: var(--navy);
+            padding: 14px 16px;
             font-weight: 700;
             text-align: center;
+            border: 1px solid #b8d8e6;
         }
 
         /* ========== OVERVIEW TEXT ========== */
@@ -529,34 +536,39 @@
             width: 100%;
             border-collapse: collapse;
             font-size: 13px;
+            border: 1px solid #7ec9df;
         }
 
         .feature-table thead th {
-            background: var(--teal);
-            color: var(--white);
-            padding: 10px 8px;
+            background: #d4f1f9;
+            color: var(--navy);
+            padding: 12px 10px;
             text-align: center;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 13px;
+            letter-spacing: 0.3px;
+            border: 1px solid #b8d8e6;
         }
 
         .feature-table tbody td {
-            padding: 10px 8px;
-            border: 1px solid #dde3e8;
+            padding: 12px 10px;
+            border: 1px solid #d0e8f0;
             text-align: center;
             vertical-align: top;
+            background: var(--white);
+            color: var(--text-body);
         }
 
         .feature-table .func-cell {
             text-align: left;
             font-size: 13px;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .feature-table .func-cell .func-title {
             font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 4px;
+            color: var(--navy);
+            margin-bottom: 6px;
         }
 
         .feature-table .func-cell ul {
@@ -567,57 +579,144 @@
         .feature-table .func-cell ul li {
             font-size: 12.5px;
             color: var(--text-body);
-            margin-bottom: 2px;
+            margin-bottom: 3px;
         }
 
         .feature-table tbody tr:nth-child(even) {
-            background: #f7fbfc;
+            background: #f8fcfe;
+        }
+
+        .feature-table tbody td:first-child {
+            font-weight: 600;
+            color: var(--navy);
+            background: #e8f7fc;
         }
 
         .feature-table tfoot td {
-            background: var(--teal);
-            color: var(--white);
-            padding: 10px 8px;
+            background: #d4f1f9;
+            color: var(--navy);
+            padding: 12px 10px;
             font-weight: 700;
+            border: 1px solid #b8d8e6;
         }
 
         /* ========== PAYMENT TABLE ========== */
         .payment-subtotal {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            border: 1px solid #7ec9df;
         }
 
         .payment-subtotal thead th {
-            background: var(--teal);
-            color: var(--white);
-            padding: 10px 16px;
-            text-align: center;
-            font-weight: 700;
+            background: #d4f1f9;
+            color: var(--navy);
+            padding: 16px 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            border: 1px solid #b8d8e6;
         }
 
         .payment-subtotal tbody td {
-            padding: 14px 16px;
-            border: 1px solid #dde3e8;
-            font-size: 14px;
+            padding: 18px 20px;
+            border: 1px solid #d0e8f0;
+            font-size: 15px;
             font-weight: 600;
+            background: #f8fcfe;
+        }
+
+        .payment-subtotal tbody td:first-child {
+            color: var(--navy);
+        }
+
+        .payment-subtotal tbody td:last-child {
+            color: var(--teal);
+            font-size: 16px;
+            font-weight: 700;
+            text-align: right;
+        }
+
+        /* Modern Payment Milestones Table */
+        .payment-milestones {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+            border: 1px solid #7ec9df;
+        }
+
+        .payment-milestones thead th {
+            background: #d4f1f9;
+            color: var(--navy);
+            padding: 14px 16px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 13.5px;
+            letter-spacing: 0.3px;
+            border: 1px solid #b8d8e6;
+        }
+
+        .payment-milestones tbody td {
+            padding: 14px 16px;
+            border: 1px solid #d0e8f0;
+            text-align: center;
+            font-size: 13.5px;
+            background: var(--white);
+            color: var(--text-body);
+        }
+
+        .payment-milestones tbody tr:nth-child(even) {
+            background: #f8fcfe;
+        }
+
+        .payment-milestones tbody td:first-child {
+            font-weight: 600;
+            color: var(--navy);
+            background: #e8f7fc;
+        }
+
+        .payment-milestones tbody td:nth-child(2) {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .payment-milestones tbody td:last-child {
+            font-weight: 600;
+            color: var(--teal);
+        }
+
+        .payment-milestones tfoot td {
+            background: #d4f1f9;
+            color: var(--navy);
+            padding: 14px 16px;
+            font-weight: 700;
+            text-align: center;
+            border: 1px solid #b8d8e6;
+            font-size: 14px;
         }
 
         /* ========== NOTES ========== */
         .note-text {
             font-size: 13px;
-            color: var(--teal-dark);
+            color: var(--navy);
             font-weight: 500;
             font-style: italic;
-            margin-top: 15px;
+            margin-top: 20px;
+            margin-bottom: 50px;
+            padding: 12px 20px;
+            background: #f0f9fc;
+            border: 1px solid #d0e8f0;
+            border-left: 3px solid #7ec9df;
         }
 
         /* ========== HR DIVIDER ========== */
         .section-divider {
             border: none;
-            border-top: 2px solid var(--teal);
-            margin: 5px 0 25px;
-            opacity: 0.4;
+            height: 2px;
+            background: linear-gradient(90deg, var(--teal) 0%, var(--teal-light) 50%, transparent 100%);
+            margin: 8px 0 28px;
+            opacity: 0.5;
         }
 
         /* ========== COVER PAGE COLORS ========== */
@@ -693,6 +792,56 @@
             .page-number {
                 bottom: 75px;
                 page-break-inside: avoid;
+            }
+            /* Table print styles */
+            .payment-subtotal,
+            .payment-milestones,
+            .styled-table,
+            .feature-table {
+                page-break-inside: auto;
+            }
+
+            /* Repeat table headers on each page */
+            .payment-subtotal thead,
+            .payment-milestones thead,
+            .styled-table thead,
+            .feature-table thead {
+                display: table-header-group;
+                page-break-inside: avoid;
+                page-break-after: avoid;
+            }
+
+            /* Repeat table footers on each page if needed */
+            .payment-subtotal tfoot,
+            .payment-milestones tfoot,
+            .styled-table tfoot,
+            .feature-table tfoot {
+                display: table-footer-group;
+                page-break-inside: avoid;
+                page-break-before: avoid;
+            }
+
+            .payment-subtotal tbody,
+            .payment-milestones tbody,
+            .styled-table tbody,
+            .feature-table tbody {
+                display: table-row-group;
+            }
+
+            .payment-subtotal tr,
+            .payment-milestones tr,
+            .styled-table tr,
+            .feature-table tr {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
+
+            .section-heading {
+                page-break-after: avoid;
+            }
+
+            .section-divider {
+                page-break-after: avoid;
             }
         }
     </style>
@@ -1366,8 +1515,39 @@
             </tfoot>
         </table>
 
-        <br><br>
+    </div>
 
+    <div class="page-number">Page: 8</div>
+
+    <div class="page-footer">
+        <img src="assets/footer.svg" alt="Footer" style="width: 100%; height: auto; display: block;">
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 9: PAYMENT BREAKDOWN -->
+<!-- ============================================================ -->
+<div class="page">
+    <div class="top-bar">
+        <div class="top-bar-teal"></div>
+        <div class="top-bar-navy"></div>
+    </div>
+
+    <div class="watermark">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(100,100)">
+                <rect x="-70" y="-70" width="140" height="140" fill="none" stroke="#003C5B" stroke-width="6" transform="rotate(45)"/>
+                <rect x="-50" y="-50" width="100" height="100" fill="none" stroke="#003C5B" stroke-width="4" transform="rotate(45)"/>
+                <circle cx="0" cy="0" r="25" fill="none" stroke="#003C5B" stroke-width="4"/>
+                <line x1="-70" y1="0" x2="-30" y2="0" stroke="#003C5B" stroke-width="3"/>
+                <line x1="30" y1="0" x2="70" y2="0" stroke="#003C5B" stroke-width="3"/>
+                <line x1="0" y1="-70" x2="0" y2="-30" stroke="#003C5B" stroke-width="3"/>
+                <line x1="0" y1="30" x2="0" y2="70" stroke="#003C5B" stroke-width="3"/>
+            </g>
+        </svg>
+    </div>
+
+    <div class="page-content">
         <!-- Payment Breakdown -->
         <h2 class="section-heading">Payment Breakdown (Module Wise)</h2>
         <hr class="section-divider">
@@ -1376,19 +1556,19 @@
         <table class="payment-subtotal">
             <thead>
                 <tr>
-                    <th colspan="2">Amount (BDT)</th>
+                    <th colspan="2">Project Cost Overview</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td style="font-weight: 700;">Payment Subtotal</td>
-                    <td></td>
+                    <td>Payment Subtotal</td>
+                    <td style="text-align: right;">—</td>
                 </tr>
             </tbody>
         </table>
 
         <!-- Payment milestones table -->
-        <table class="styled-table">
+        <table class="payment-milestones">
             <thead>
                 <tr>
                     <th>Sl. No</th>
@@ -1403,34 +1583,34 @@
                     <td>1</td>
                     <td>1<sup>st</sup> payment</td>
                     <td>Inception Report</td>
-                    <td>25</td>
+                    <td>25%</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>2<sup>nd</sup> Payment</td>
                     <td>After First Release</td>
-                    <td>25</td>
+                    <td>25%</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>3<sup>rd</sup> Payment</td>
                     <td>After Second Release</td>
-                    <td>25</td>
+                    <td>25%</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>4</td>
                     <td>Final Payment</td>
                     <td>After Third Release</td>
-                    <td>25</td>
+                    <td>25%</td>
                     <td></td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3"></td>
+                    <td colspan="3">Total</td>
                     <td>100%</td>
                     <td></td>
                 </tr>
@@ -1440,7 +1620,7 @@
         <p class="note-text">* Payment will be updated based on the requirements</p>
     </div>
 
-    <div class="page-number">Page: 8</div>
+    <div class="page-number">Page: 9</div>
 
     <div class="page-footer">
         <img src="assets/footer.svg" alt="Footer" style="width: 100%; height: auto; display: block;">
